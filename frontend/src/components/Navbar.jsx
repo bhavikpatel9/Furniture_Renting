@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '../assets/images/furniture.png'
 
 const Navbar = ({ isLoggedIn, userName, isAdmin }) => {
 
@@ -7,19 +8,8 @@ const Navbar = ({ isLoggedIn, userName, isAdmin }) => {
     <div className='sticky top-0 z-10'>
       <nav className='flex justify-between p-3 bg-[#3B5998]'>
         <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-          <span className="ml-3 text-xl text-white">Tailblocks</span>
+          <img src={logo} alt="logo" width={30}/>
+          <span className="ml-3 text-xl text-white">FurnitureRent</span>
         </a>
 
         <ul className='flex gap-7 items-center text-white'>
