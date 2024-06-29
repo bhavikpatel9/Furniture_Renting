@@ -14,6 +14,7 @@ import Home from './components/Home';
 import FurnitureDetails from './pages/FurnitureDetails';
 import PopularFurniture from './components/PopularFurniture';
 import popularFurniture from './mockData/PopularFurnitureData';
+import Cart from './pages/Cart';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -105,6 +106,13 @@ function App() {
         </>
       ),
     },
+    {
+      path: '/Card/:id',
+      element: (
+        <>
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <Cart allFurniture={allFurniture} isLoggedIn={isLoggedIn}/>
+        </>),},
   ]);
 
 
