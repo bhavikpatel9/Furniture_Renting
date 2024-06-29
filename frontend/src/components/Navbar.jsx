@@ -38,6 +38,7 @@ const Navbar = ({ isLoggedIn, userName, onLogout, isAdmin }) => {
 
         <ul className='flex gap-7 items-center text-white'>
           <li><NavLink className={(e) => (e.isActive ? "text-blue-300" : "")} to="/">Home</NavLink></li>
+          <li><NavLink className={(e) => (e.isActive ? "text-blue-300" : "")} to="/allfurniture">All Furniture</NavLink></li>
           {isAdmin && (<li><NavLink className={(e) => (e.isActive ? "text-blue-300" : "")} to="/admin/:id">Add Package</NavLink></li>)}
         </ul>
         {isLoggedIn ? (

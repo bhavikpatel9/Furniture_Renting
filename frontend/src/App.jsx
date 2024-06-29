@@ -8,6 +8,10 @@ import Navbar from './components/Navbar'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile';
+import AllFurniture from './pages/AllFurniture';
+import allFurniture from './mockData/AllFurnitureData';
+import Home from './components/Home';
+import FurnitureDetails from './pages/FurnitureDetails';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,6 +53,25 @@ function App() {
       element: (
         <>
           <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <Home imageHeight="h-[500px]" />
+        </>
+      ),
+    },
+    {
+      path: '/allfurniture',
+      element: (
+        <>
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <AllFurniture allFurniture={allFurniture}/>
+        </>
+      ),
+    },
+    {
+      path: '/furnituredetails/:id',
+      element: (
+        <>
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <FurnitureDetails allFurniture={allFurniture} isLoggedIn={isLoggedIn}/>
         </>
       ),
     },
