@@ -6,7 +6,6 @@ exports.signUp = async (req,res)=>{
 
     const user_obj = {
         name : req.body.name,
-        // userId : req.body.userId,
         password : bcryptjs.hashSync(req.body.password,8),
         email : req.body.email,
         userType : req.body.userType

@@ -1,6 +1,5 @@
 const user_model = require("../models/userModel")
 const bcryptjs = require("bcryptjs")
-const jwt = require("jsonwebtoken")
 
 exports.getUser = async (req,res)=>{
 
@@ -25,35 +24,29 @@ exports.getUser = async (req,res)=>{
     
 }
 
-exports.login = async (req,res)=>{
-    //find user by email id
-    const user = await user_model.findOne({email : req.body.email})
+exports.updateUserProfile = async (req, res) => {
+  const { name, email, password } = req.body;
 
-    if(!user){
-        return res.status(400).send({
-            message : "user not found!"
-        })
+  try {
+    // Find the user by email (assuming email is unique)
+    let user = await user_model.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    //check password 
-    const isPasswordValid = bcryptjs.compareSync(req.body.password,user.password)
+    // Update user object with new values
+    user.name = name || user.name; // Update only if name is provided
+    user.email = email || user.email; // Update only if email is provided
+    user.password = bcryptjs.hashSync(password,8) || user.password; // Update only if password is provided
 
-    if(!isPasswordValid){
-        return res.status(401).send({
-            message : "password is not correct"
-        })
-    }
+    // Save updated user object
+    await user.save();
 
-    //asisgn token
-    const token = jwt.sign({id : user._id},'secret message',{expiresIn : '1d'})
-
-    res.status(200).send({
-        name : user.name,
-        email : user.email,
-        userType : user.userType,  
-        id : user._id,
-        accessToken : token
-    })
-
-
-}
+    // Return updated user object as response
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
