@@ -19,7 +19,7 @@ const Home = ({imageHeight,searchedQuery}) => {
     <>
     <div className="relative">
       {/* Adjusting the height of the image */}
-      <img src={homeImage} alt="" className={`object-cover w-full ${imageHeight}`}  />
+      <img src={homeImage} alt="" className={` w-full ${imageHeight}`}  />
       
       {/* Positioning the div above the image */}
       <div className='absolute bottom-3 left-1/3 right-0  w-fit rounded bg-white'>

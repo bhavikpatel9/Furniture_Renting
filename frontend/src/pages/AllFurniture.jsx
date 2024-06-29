@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { FaSun, FaMoon } from "react-icons/fa";
 
-const AllFurniture = ({allFurniture}) => {
+const AllFurniture = ({ allFurniture }) => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
@@ -16,7 +15,7 @@ const AllFurniture = ({allFurniture}) => {
   let searchQuery = queryParams.get("search")?.toLowerCase() || "";
 
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [priceRange, setPriceRange] = useState([15, 75]);
+  const [priceRange, setPriceRange] = useState([99, 999]);
   const [filteredFurniture, setFilteredFurniture] = useState(allFurniture);
   const [sortOrder, setSortOrder] = useState("lowest");
 
@@ -52,40 +51,6 @@ const AllFurniture = ({allFurniture}) => {
 
     setFilteredFurniture(filtered);
   }, [priceRange, selectedCategory, searchQuery, sortOrder]);
-
-  const currencyRates = {
-    INR: 1,
-    USD: 0.012,
-    EUR: 0.011,
-    GBP: 0.0094,
-  };
-
-  const currencySymbols = {
-    INR: "₹",
-    USD: "$",
-    EUR: "€",
-    GBP: "£",
-  };
-
-  const [selectedCurrency, setSelectedCurrency] = useState("INR");
-
-  const handleCurrencyChange = (event) => {
-    setSelectedCurrency(event.target.value);
-  };
-
-  const convertPrice = (price, currency) => {
-    const rate = currencyRates[currency];
-    return `${currencySymbols[currency]} ${Math.floor(
-      price * rate
-    ).toLocaleString()}`;
-  };
-
-  const convertRange = (range, currency) => {
-    const rate = currencyRates[currency];
-    return range.map((value) => Math.floor(value * rate));
-  };
-
-  const convertedRange = convertRange(priceRange, selectedCurrency);
 
   return (
     <>
@@ -154,38 +119,20 @@ const AllFurniture = ({allFurniture}) => {
             Bedroom
           </button>
         </div>
-        <div>
-          <select
-            value={selectedCurrency}
-            onChange={handleCurrencyChange}
-            className="border-gray-500 border rounded"
-          >
-            <option value="INR">INR (₹)</option>
-            <option value="USD">USD ($)</option>
-            <option value="EUR">EUR (€)</option>
-            <option value="GBP">GBP (£)</option>
-          </select>
-        </div>
       </div>
 
       <div className="mt-4 mx-4">
         <h2>Filter by Price</h2>
         <div style={{ width: "80%", margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <span>
-              {currencySymbols[selectedCurrency]}{" "}
-              {convertedRange[0].toLocaleString()}
-            </span>
-            <span>
-              {currencySymbols[selectedCurrency]}{" "}
-              {convertedRange[1].toLocaleString()}
-            </span>
+            <span>₹{priceRange[0]}</span>
+            <span>₹{priceRange[1]}</span>
           </div>
           <Slider
             range
-            min={15}
-            max={75}
-            defaultValue={[15, 75]}
+            min={99}
+            max={999}
+            defaultValue={[99, 999]}
             onChange={handleSliderChange}
             trackStyle={[{ backgroundColor: "#4299e1" }]}
             handleStyle={[
@@ -222,7 +169,7 @@ const AllFurniture = ({allFurniture}) => {
         </div>
       </div>
 
-      <div className="container mx-auto mt-4">
+      <div className="container mx-auto mt-4 p-4">
         {filteredFurniture.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredFurniture.map((item, index) => (
@@ -236,12 +183,10 @@ const AllFurniture = ({allFurniture}) => {
                   className="w-full border-2 h-40 object-cover mb-4 rounded-lg"
                 />
                 <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
-                <p className="text-gray-600">{item.description}</p>
-                <p>{item.availabilityStatus}</p>
+                <p className="text-gray-600 mb-2">{item.description}</p>
+                <span className={`mt-4 rounded py-1 text-white ${item.availabilityStatus === 'Available' ? 'text-green-500' : 'text-red-500'}`}>{item.availabilityStatus}</span>
                 <div className="flex justify-between items-center">
-                  <span className="text-blue-500">
-                    {convertPrice(item.rentalPrice, selectedCurrency)}
-                  </span>
+                  <span className="text-blue-500">₹{item.rentalPrice}</span>
                   <Link to={`/furnitureDetails/${item.id}`}>
                     <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
                       Explore

@@ -12,6 +12,8 @@ import AllFurniture from './pages/AllFurniture';
 import allFurniture from './mockData/AllFurnitureData';
 import Home from './components/Home';
 import FurnitureDetails from './pages/FurnitureDetails';
+import PopularFurniture from './components/PopularFurniture';
+import popularFurniture from './mockData/PopularFurnitureData';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -54,6 +56,7 @@ function App() {
         <>
           <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
           <Home imageHeight="h-[500px]" />
+          <PopularFurniture popularFurniture={popularFurniture}/>
         </>
       ),
     },
