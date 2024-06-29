@@ -20,7 +20,7 @@ const PopularFurniture = ({ popularFurniture }) => {
               />
               <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
               <p className="text-gray-600 mb-2">{item.description}</p>
-              <span className={`mt-4 rounded py-1 text-white ${item.availabilityStatus === 'Available' ? 'text-green-500' : 'text-red-500'}`}>{item.availabilityStatus}</span>
+              <span className={`mt-4 rounded py-1 ${item.availabilityStatus === 'Available' ? 'text-green-500' : 'text-red-500'}`}>{item.availabilityStatus}</span>
               <div className="flex justify-between items-center">
                 <span className="text-blue-500">₹{item.rentalPrice} / Day</span>
                 <Link to={`/furnitureDetails/${item.id}`}>

@@ -1,21 +1,7 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = ({ isLoggedIn, userName, onLogout, isAdmin }) => {
-
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  useEffect(() => {
-    if(!isLoggedIn){
-      setShowDropdown(false)
-    }
-  }, [isLoggedIn])
-  
-  
-
-  const handleDropdownClick = () => {
-    setShowDropdown(!showDropdown);
-  };
+const Navbar = ({ isLoggedIn, userName, isAdmin }) => {
 
   return (
     <div className='sticky top-0 z-10'>
@@ -43,16 +29,9 @@ const Navbar = ({ isLoggedIn, userName, onLogout, isAdmin }) => {
         </ul>
         {isLoggedIn ? (
           <div className="relative flex items-center">
-            <button onClick={handleDropdownClick} className="text-white bg-blue-500 px-2 py-1 rounded"><NavLink to="/profile">{userName}</NavLink>
-              
+            <button className="text-white bg-blue-500 px-2 py-1 rounded"><NavLink to="/profile">{userName}</NavLink>
             </button>
-            {showDropdown && (
-              <div className="absolute right-0 mt-20  ">
-                <button onClick={onLogout} className="block px-4 py-2 text-gray-800 bg-white rounded-md shadow-md hover:bg-gray-100">
-                  Logout
-                </button>
-              </div>
-            )}
+
           </div>
         ) : (
           <button>

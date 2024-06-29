@@ -46,7 +46,7 @@ const FurnitureDetails = ({ allFurniture, isLoggedIn }) => {
                 <div className="w-full sm:w-1/2 px-4">
                     <h2 className="text-3xl font-bold mb-4">{furnitureItem.name}</h2>
                     <p className="text-gray-600 mb-4">{furnitureItem.description}</p>
-                    <span className={`mt-4 rounded py-1 text-white ${furnitureItem.availabilityStatus === 'Available' ? 'text-green-500' : 'text-red-500'}`}>{furnitureItem.availabilityStatus}</span>
+                    <span className={`mt-4 rounded py-1 ${furnitureItem.availabilityStatus === 'Available' ? 'text-green-500' : 'text-red-500'}`}>{furnitureItem.availabilityStatus}</span>
 
                     <div className="flex items-center mb-4 mt-2">
                         <h3 className="text-lg font-semibold">Category:</h3>

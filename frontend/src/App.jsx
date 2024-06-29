@@ -54,7 +54,7 @@ function App() {
       path: '/',
       element: (
         <>
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <Home imageHeight="h-[500px]" />
           <PopularFurniture popularFurniture={popularFurniture}/>
         </>
@@ -64,7 +64,7 @@ function App() {
       path: '/allfurniture',
       element: (
         <>
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <AllFurniture allFurniture={allFurniture}/>
         </>
       ),
@@ -73,7 +73,7 @@ function App() {
       path: '/furnituredetails/:id',
       element: (
         <>
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <FurnitureDetails allFurniture={allFurniture} isLoggedIn={isLoggedIn}/>
         </>
       ),
@@ -82,7 +82,7 @@ function App() {
       path: '/signup',
       element: (
         <>
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <Signup onLogin={handleLogin}/>
         </>
       ),
@@ -91,7 +91,7 @@ function App() {
       path: '/login',
       element: (
         <>
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
           <Login onLogin={handleLogin} />
         </>
       ),
@@ -100,8 +100,8 @@ function App() {
       path: '/profile',
       element: (
         <>
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} onLogout={handleLogout} />
-          <Profile email={email}/>
+          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
+          <Profile email={email} onLogout={handleLogout}/>
         </>
       ),
     },

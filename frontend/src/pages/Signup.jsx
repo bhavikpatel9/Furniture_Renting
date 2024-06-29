@@ -36,8 +36,8 @@ const Signup = ({ onLogin }) => {
         // Registration successful (assuming API returns user data or success message)
         const userData = await response.json();
         // console.log("Success:", userData);
-        onLogin(userData.name); // Call onLogin function passed from App.jsx to update login state
-        navigate('/'); // Redirect to home page after registration
+        // onLogin(userData.name); // Call onLogin function passed from App.jsx to update login state
+        navigate('/login'); // Redirect to home page after registration
       } else {
         // Registration failed
         const errorData = await response.json(); // Assuming API returns error details

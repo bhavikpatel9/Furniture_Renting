@@ -180,12 +180,12 @@ const AllFurniture = ({ allFurniture }) => {
                 <img
                   src={item.imageUrl}
                   alt={item.name}
-                  className="w-full border-2 h-40 object-cover mb-4 rounded-lg"
+                  className="w-full h-40 object-cover mb-4 rounded-lg"
                 />
                 <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
                 <p className="text-gray-600 mb-2">{item.description}</p>
-                <span className={`mt-4 rounded py-1 text-white ${item.availabilityStatus === 'Available' ? 'text-green-500' : 'text-red-500'}`}>{item.availabilityStatus}</span>
-                <div className="flex justify-between items-center">
+                <span className={`mt-4 rounded py-1 ${item.availabilityStatus === 'Available' ? 'text-green-500' : 'text-red-500'}`}>{item.availabilityStatus}</span>
+                <div className="flex justify-between items-center mt-2">
                   <span className="text-blue-500">₹{item.rentalPrice}</span>
                   <Link to={`/furnitureDetails/${item.id}`}>
                     <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
