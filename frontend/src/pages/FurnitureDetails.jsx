@@ -48,6 +48,7 @@ const FurnitureDetails = ({ allFurniture, isLoggedIn }) => {
             <div>
                 <h2 className="text-2xl font-bold mb-4">{furnitureItem.name}</h2>
                 <p className="text-gray-600 mb-4">{furnitureItem.description}</p>
+                <p className="text-gray-600 mb-4">{furnitureItem.availabilityStatus}</p>
 
                 <div className="flex items-center mb-4">
                     <h3 className="text-lg font-semibold">Price per day :</h3>

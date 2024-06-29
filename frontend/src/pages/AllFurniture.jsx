@@ -237,6 +237,7 @@ const AllFurniture = ({allFurniture}) => {
                 />
                 <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
                 <p className="text-gray-600">{item.description}</p>
+                <p>{item.availabilityStatus}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-blue-500">
                     {convertPrice(item.rentalPrice, selectedCurrency)}
